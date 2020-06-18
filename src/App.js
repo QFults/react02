@@ -3,48 +3,87 @@ import React, { Component } from 'react'
 class App extends Component {
 
   state = {
-    count: 0,
     name: '',
-    dispName: ''
-  }
-
-  handleIncrement = () => {
-    this.setState({ count: this.state.count + 1 })
-  }
-
-  handleDecrement = () => {
-    this.setState({ count: this.state.count - 1 })
-  }
-
-  handleSubmitName = event => {
-    event.preventDefault()
-    this.setState({ dispName: this.state.name, name: '' })
+    movie: '',
+    song: '',
+    food: '',
+    game: '',
+    user: {}
   }
 
   handleInputChange = event => {
-    this.setState({ name: event.target.value })
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    this.setState({
+      user: {
+        name: this.state.name,
+        movie: this.state.movie,
+        song: this.state.song,
+        food: this.state.food,
+        game: this.state.game
+      },
+      name: '',
+      movie: '',
+      song: '',
+      food: '',
+      game: ''
+    })
   }
 
   render() {
     return (
       <>
-        <h1>Name: {this.state.dispName}</h1>
         <form>
           <p>
             <label htmlFor="name">name</label>
-            <input 
-              type="text" 
-              name="name" 
-              id="name" 
+            <input
+              type="text"
+              name="name"
+              id="name"
               onChange={this.handleInputChange}
               value={this.state.name} />
           </p>
-          <button onClick={this.handleSubmitName}>Submit Name</button>
+          <p>
+            <label htmlFor="movie">movie</label>
+            <input
+              type="text"
+              name="movie"
+              id="movie "
+              onChange={this.handleInputChange} 
+              value={this.state.movie} />
+          </p>
+          <p>
+            <label htmlFor="song">song</label>
+            <input
+              type="text"
+              name="song"
+              id="song"
+              onChange={this.handleInputChange}
+              value={this.state.song} />
+          </p>
+          <p>
+            <label htmlFor="food">food</label>
+            <input
+              type="text"
+              name="food"
+              id="food"
+              onChange={this.handleInputChange}
+              value={this.state.food} />
+          </p>
+          <p>
+            <label htmlFor="game">game</label>
+            <input
+              type="text"
+              name="game"
+              id="game"
+              onChange={this.handleInputChange}
+              value={this.state.game} />
+          </p>
+          <button onClick={this.handleSubmit}>Submit</button>
         </form>
-        <hr/>
-        <h1>Count: {this.state.count}</h1>
-        <button onClick={this.handleIncrement}>+</button>
-        <button onClick={this.handleDecrement}>-</button>
       </>
     )
   }
