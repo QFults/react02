@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import User from './components/User'
+import Form from './components/Form'
 
 class App extends Component {
 
@@ -36,54 +38,15 @@ class App extends Component {
   render() {
     return (
       <>
-        <form>
-          <p>
-            <label htmlFor="name">name</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              onChange={this.handleInputChange}
-              value={this.state.name} />
-          </p>
-          <p>
-            <label htmlFor="movie">movie</label>
-            <input
-              type="text"
-              name="movie"
-              id="movie "
-              onChange={this.handleInputChange} 
-              value={this.state.movie} />
-          </p>
-          <p>
-            <label htmlFor="song">song</label>
-            <input
-              type="text"
-              name="song"
-              id="song"
-              onChange={this.handleInputChange}
-              value={this.state.song} />
-          </p>
-          <p>
-            <label htmlFor="food">food</label>
-            <input
-              type="text"
-              name="food"
-              id="food"
-              onChange={this.handleInputChange}
-              value={this.state.food} />
-          </p>
-          <p>
-            <label htmlFor="game">game</label>
-            <input
-              type="text"
-              name="game"
-              id="game"
-              onChange={this.handleInputChange}
-              value={this.state.game} />
-          </p>
-          <button onClick={this.handleSubmit}>Submit</button>
-        </form>
+        <Form
+          name={this.state.name}
+          movie={this.state.movie}
+          song={this.state.song}
+          food={this.state.food}
+          game={this.state.game}
+          handleInputChange={this.handleInputChange}
+          handleSubmit={this.handleSubmit} />
+        {this.state.user.name ? <User user={this.state.user} /> : null}
       </>
     )
   }
